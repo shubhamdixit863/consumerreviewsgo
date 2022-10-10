@@ -1,0 +1,60 @@
+<div class="modal">
+
+    <!-- Login modal -->
+    <div id="login-modal">
+        <div class="login-from register">
+            <h3>Create an account</h3>
+            <div class="form-group">
+                <input type="text" name="username" id="username_register" placeholder="User Name" required="">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" id="email_register" placeholder="Email" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password_register" placeholder="Password" required="">
+            </div>
+            <div class="form-group full-width">
+                <div class="checkbox-wrap">
+                    <input type='checkbox' name='remember-me' value='remember-me' id="agree-policy" />
+                    <label for="agree-policy">I agree to the <a href="#">Privacy Policy</a></label>
+                </div>
+                <div class="checkbox-wrap">
+                    <input type='checkbox' name='remember-me' value='remember-me' id="agree-terms" />
+                    <label for="agree-terms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button"  onclick="Ajax()" class="theme-btn btn-style-one">Register</button>
+            </div>
+            <div class="form-group">
+                <span class="text">Or connect with</span>
+            </div>
+            <div class="form-group">
+                <a href="#" class="social-btn facebook-btn"><span class="fab fa-facebook-f"></span> Facebook</a>
+                <a href="#" class="social-btn google-btn"><span class="fab fa-google"></span> Google</a>
+            </div>
+        </div>
+    </div>
+    <!-- End Login Module -->
+    <script>
+        function Ajax(){
+            let username=document.getElementById("username_register").value
+            let email=document.getElementById("email_register").value
+            let password=document.getElementById("email_register").value
+
+            fetch('/auth/signup', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({username,email,password})
+            }).then(res => res.json())
+                .then(res => {
+                    location.reload()
+                });
+
+        }
+    </script>
+
+</div>

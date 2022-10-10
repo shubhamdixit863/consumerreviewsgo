@@ -1,0 +1,4 @@
+server:
+  port: :8080
+elastic:
+  server: http://23.92.65.116:9200/
