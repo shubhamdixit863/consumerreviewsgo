@@ -14,10 +14,18 @@ func (h HomeController) Index(c *gin.Context) {
 	session := sessions.Default(c)
 
 	user := session.Get("user")
-	fmt.Println(user)
+	fmt.Println("user", user)
 
-	c.HTML(http.StatusOK, "index", gin.H{
-		"title": "consumer reviews",
-		"user":  user,
-	})
+	if user != nil {
+		c.HTML(http.StatusOK, "index", gin.H{
+			"title": "consumer reviews",
+			"user":  user,
+		})
+	} else {
+		c.HTML(http.StatusOK, "index", gin.H{
+			"title": "consumer reviews",
+			"user":  "",
+		})
+	}
+
 }

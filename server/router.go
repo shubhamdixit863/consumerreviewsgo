@@ -27,7 +27,7 @@ func NewRouter() *gin.Engine {
 
 	v1 := router.Group("/")
 	{
-		homeGroup := v1.Group("home")
+		homeGroup := v1.Group("/")
 		{
 			home := new(controllers.HomeController)
 			homeGroup.GET("/", home.Index)
